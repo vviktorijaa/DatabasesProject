@@ -10,6 +10,18 @@
 
 <div class="container text-center mt-5">
     <h1>Diets</h1>
+    <ul style="list-style-type: none" class="mt-5">
+        <li th:each="diet: ${allDiets}">
+            <h3><th:block th:text="${diet.getDiet_name()}"></th:block></h3>
+            <form th:method="GET" th:action="@{'/diets/{id}' (id=${diet.getDiet_id()})}">
+                <input type="button" value="See more" class="btn btn-sm btn-info text-white">
+            </form>
+            <form>
+                <input type="button" class="btn btn-sm btn-primary" value="Enroll in this diet">
+            </form>
+            <br>
+        </li>
+    </ul>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-bottom">

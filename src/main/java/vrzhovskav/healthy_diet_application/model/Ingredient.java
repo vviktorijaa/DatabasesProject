@@ -1,12 +1,12 @@
 package vrzhovskav.healthy_diet_application.model;
 
 import lombok.Data;
-
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
+@Table(name = "Ingredient", schema = "healthy_diet_application_database")
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,9 +15,9 @@ public class Ingredient {
     private Integer kcal;
 
     @ManyToMany(mappedBy = "recipeHasIngredients")
-    private List<Recipe> ingredientIsInRecipe;
+    private Set<Recipe> ingredientIsInRecipe;
 
-    public Ingredient(String ingredient_name, Integer kcal, List<Recipe> ingredientIsInRecipe) {
+    public Ingredient(String ingredient_name, Integer kcal, Set<Recipe> ingredientIsInRecipe) {
         this.ingredient_name = ingredient_name;
         this.kcal = kcal;
         this.ingredientIsInRecipe = ingredientIsInRecipe;

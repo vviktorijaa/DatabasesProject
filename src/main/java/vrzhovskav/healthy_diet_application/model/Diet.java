@@ -1,12 +1,12 @@
 package vrzhovskav.healthy_diet_application.model;
 
 import lombok.Data;
-
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
+@Table(name = "Diet", schema = "healthy_diet_application_database")
 public class Diet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,12 +15,12 @@ public class Diet {
     private String diet_desc;
 
     @ManyToMany(mappedBy = "recipeIsInDiet")
-    private List<Recipe> dietHasRecipes;
+    private Set<Recipe> dietHasRecipes;
 
     @ManyToMany(mappedBy = "userIsOnADiet")
-    public List<User> users;
+    public Set<User> users;
 
-    public Diet(String diet_name, String diet_desc, List<Recipe> dietHasRecipes, List<User> users) {
+    public Diet(String diet_name, String diet_desc, Set<Recipe> dietHasRecipes, Set<User> users) {
         this.diet_name = diet_name;
         this.diet_desc = diet_desc;
         this.dietHasRecipes = dietHasRecipes;

@@ -9,24 +9,24 @@
 <body>
 
 <div class="container text-center mt-5">
-    <h1>Hello username</h1>
+    <h1>Hello <th:block th:text="${session.u.getUsername()}"></th:block>!</h1>
 
     <div class="row mt-5">
         <div class="col">
             <h3>Your height</h3>
-            <h4>Height</h4>
+            <h4><th:block th:text="${session.u.getHeight()}"></th:block></h4>
         </div>
 
 
         <div class="col">
             <h3>Your weight</h3>
-            <h4>Weight</h4>
+            <h4><th:block th:text="${session.u.getWeight()}"></th:block></h4>
         </div>
 
 
         <div class="col mb-5">
             <h3>Your BMI</h3>
-            <h4>BMI</h4>
+            <h4><th:block th:text="${session.u.getBmi()}"></th:block></h4>
         </div>
     </div>
 

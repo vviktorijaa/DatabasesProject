@@ -10,6 +10,27 @@
 
 <div class="container text-center mt-5">
     <h1>Recipes</h1>
+    <ul style="list-style-type: none" class="mt-5">
+        <li th:each="recipe: ${allRecipes}">
+            <p><th:block th:text="${recipe.getName()}"></th:block></p>
+            <form th:action="@{'/recipes/recipe/{id}' (id=${recipe.getRecipe_id()})}" th:method="GET">
+                <input type="button" value="See more" class="btn btn-sm btn-info text-white">
+            </form>
+            <form th:action="@{'/recipes/addToFavourites/{id}' (id=${recipe.getRecipe_id()})}" th:method="POST">
+                <input type="button" value="Add to favourites" class="btn btn-sm btn-primary text-white">
+            </form>
+            <br>
+        </li>
+    </ul>
+</div>
+
+<div class="container w-25 text-center">
+    <form th:method="GET" th:action="@{/recipes}">
+        <div class="mb-3">
+            <input type="text" class="form-control" id="search" name="searchRecipes" aria-describedby="search" placeholder="Search recipes">
+            <input type="submit" class="btn btn-primary mt-2 mb-5" value="Search">
+        </div>
+    </form>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-bottom">

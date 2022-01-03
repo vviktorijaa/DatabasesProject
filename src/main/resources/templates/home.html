@@ -11,8 +11,10 @@
 <div class="container text-center mt-5">
     <div class="row">
         <div class="col">
-            <h1>0/KCAL</h1>
-            <a class="btn btn-primary" href="addCalories">Add calories</a>
+            <h1>0/<th:block th:text="${session.u.getKcal_needed()}"></th:block></h1>
+            <form th:method="GET" th:action="@{/home/addCalories}">
+                <input type="submit" class="btn btn-primary" value="Add calories">
+            </form>
         </div>
 
         <div class="col">
