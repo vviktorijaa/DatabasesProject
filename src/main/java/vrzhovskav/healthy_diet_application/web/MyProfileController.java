@@ -1,6 +1,7 @@
 package vrzhovskav.healthy_diet_application.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import vrzhovskav.healthy_diet_application.model.User;
@@ -18,7 +19,8 @@ public class MyProfileController {
     }
 
     @GetMapping
-    public String getProfilePage(HttpServletRequest request){
+    public String getProfilePage(HttpServletRequest request,
+                                 Model model){
         User user = (User) request.getSession().getAttribute("u");
         return "myProfile";
     }

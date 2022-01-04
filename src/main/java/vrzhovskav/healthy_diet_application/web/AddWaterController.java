@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import vrzhovskav.healthy_diet_application.service.UserService;
 
-import javax.servlet.http.HttpServletRequest;
-
 @Controller
 @RequestMapping("/addWater")
 public class AddWaterController {

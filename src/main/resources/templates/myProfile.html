@@ -9,7 +9,7 @@
 <body>
 
 <div class="container text-center mt-5">
-    <h1>Hello <th:block th:text="${session.u.getUsername()}"></th:block>!</h1>
+    <h1>Hello <th:block th:text="${session.u.getUsername()}"></th:block>
 
     <div class="row mt-5">
         <div class="col">
@@ -23,7 +23,6 @@
             <h4><th:block th:text="${session.u.getWeight()}"></th:block></h4>
         </div>
 
-
         <div class="col mb-5">
             <h3>Your BMI</h3>
             <h4><th:block th:text="${session.u.getBmi()}"></th:block></h4>
@@ -33,6 +32,7 @@
     <div class="row mt-5">
         <div class="col">
             <h2>My favourite recipes</h2>
+            <h4><th:block th:each="recipe: ${session.faveRecipes}"></th:block></h4>
         </div>
 
         <div class="col">
