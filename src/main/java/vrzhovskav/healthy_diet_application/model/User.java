@@ -65,9 +65,23 @@ public class User {
         this.goal = goal;
         this.activity_rate = activity_rate;
         this.kcal_needed = kcal_needed;
-        this.bmi=bmi;
+        this.bmi = bmi;
         this.kcal_consumed = kcal_consumed;
         this.water_consumed = water_consumed;
+    }
+
+    public User(String username, String password, Integer age, String gender, Float height, Float weight, String goal, String activity_rate, Integer kcal_needed, Float bmi, Integer kcal_consumed) {
+        this.username = username;
+        this.password = password;
+        this.age=age;
+        this.gender = gender;
+        this.height = height;
+        this.weight = weight;
+        this.goal = goal;
+        this.activity_rate = activity_rate;
+        this.kcal_needed = kcal_needed;
+        this.bmi=bmi;
+        this.kcal_consumed = kcal_consumed;
     }
 
     public User(String username, String password, Integer age, String gender, Float height, Float weight, String goal, String activity_rate, Integer kcal_needed, Float bmi) {

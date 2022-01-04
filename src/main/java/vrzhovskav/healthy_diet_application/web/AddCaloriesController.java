@@ -1,8 +1,8 @@
 package vrzhovskav.healthy_diet_application.web;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import vrzhovskav.healthy_diet_application.model.User;
 import vrzhovskav.healthy_diet_application.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,7 +22,10 @@ public class AddCaloriesController {
     }
 
     @PostMapping
-    public String addCalories(@RequestParam Integer consumedKcal, Model model, HttpServletRequest request){
+    public String addCalories(@RequestParam Integer consumedKcal, HttpServletRequest request){
+        User u = (User) request.getSession().getAttribute("u");
+        User newUser = this.userService.save(u.getUsername(), u.getPassword(), u.getAge(), u.getGender(), u.getHeight(), u.getWeight(), u.getGoal(), u.getActivity_rate(), u.getKcal_needed(), u.getBmi(), consumedKcal);
+        request.getSession().setAttribute("newUser", newUser);
         return "redirect:/home";
     }
 }
