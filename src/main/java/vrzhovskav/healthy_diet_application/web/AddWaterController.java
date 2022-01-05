@@ -30,7 +30,8 @@ public class AddWaterController {
                            HttpServletRequest request){
         User u = (User) request.getSession().getAttribute("u");
         Integer water = consumedWater + u.getWater_consumed();
-        u = this.userService.save(u.getUsername(), u.getPassword(), u.getAge(), u.getGender(), u.getHeight(), u.getWeight(), u.getGoal(), u.getActivity_rate(), u.getKcal_needed(), u.getBmi(), u.getKcal_consumed(), water);
+        //u = this.userService.save(u.getUsername(), u.getPassword(), u.getAge(), u.getGender(), u.getHeight(), u.getWeight(), u.getGoal(), u.getActivity_rate(), u.getKcal_needed(), u.getBmi(), u.getKcal_consumed(), water);
+        u = this.userService.save(u.getUsername(), u.getPassword(), u.getAge(), u.getGender(), u.getHeight(), u.getWeight(), u.getGoal(), u.getActivity_rate(), u.getKcal_needed(), u.getBmi(), u.getKcal_consumed(), water, u.getIs_favourite(), u.getUserIsOnADiet());
         request.getSession().setAttribute("u", u);
         return "redirect:/home";
     }

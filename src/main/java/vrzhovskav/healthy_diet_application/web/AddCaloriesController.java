@@ -25,7 +25,8 @@ public class AddCaloriesController {
     public String addCalories(@RequestParam Integer consumedKcal, HttpServletRequest request){
         User u = (User) request.getSession().getAttribute("u");
         Integer kcal = consumedKcal + u.getKcal_consumed();
-        u = this.userService.save(u.getUsername(), u.getPassword(), u.getAge(), u.getGender(), u.getHeight(), u.getWeight(), u.getGoal(), u.getActivity_rate(), u.getKcal_needed(), u.getBmi(), kcal, u.getWater_consumed());
+        //u = this.userService.save(u.getUsername(), u.getPassword(), u.getAge(), u.getGender(), u.getHeight(), u.getWeight(), u.getGoal(), u.getActivity_rate(), u.getKcal_needed(), u.getBmi(), kcal, u.getWater_consumed());
+        u = this.userService.save(u.getUsername(), u.getPassword(), u.getAge(), u.getGender(), u.getHeight(), u.getWeight(), u.getGoal(), u.getActivity_rate(), u.getKcal_needed(), u.getBmi(), kcal, u.getWater_consumed(), u.getIs_favourite(), u.getUserIsOnADiet());
         request.getSession().setAttribute("u", u);
         return "redirect:/home";
     }

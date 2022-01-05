@@ -11,7 +11,7 @@ public interface PrikazhiReceptRepository extends JpaRepository<PrikazhiRecept, 
     @Override
     List<PrikazhiRecept> findAll();
 
-    List<PrikazhiRecept> findAllByName(String name);
+    List<PrikazhiRecept> findAllByNameLike(String name);
 
     PrikazhiRecept findById(Integer id);
 }

@@ -23,10 +23,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public User save(String username, String password, Integer age, String gender, Float height, Float weight, String goal, String activity_rate, Integer kcal_needed, Float bmi, Integer kcalConsumed, Integer waterConsumed) {
+    public User save(String username, String password, Integer age, String gender, Float height, Float weight, String goal, String activity_rate, Integer kcal_needed, Float bmi, Integer kcalConsumed, Integer waterConsumed, List<Recipe> is_favourite, List<Diet> userIsOnADiet) {
         this.userRepository.deleteUserByUsername(username);
         this.userRepository.flush();
-        User u = new User(username, password, age, gender, height, weight, goal, activity_rate, kcal_needed, bmi, kcalConsumed, waterConsumed);
+        User u = new User(username, password, age, gender, height, weight, goal, activity_rate, kcal_needed, bmi, kcalConsumed, waterConsumed, is_favourite, userIsOnADiet);
         return this.userRepository.save(u);
     }
 

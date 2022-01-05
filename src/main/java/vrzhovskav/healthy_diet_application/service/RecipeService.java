@@ -8,4 +8,5 @@ public interface RecipeService {
     List<Recipe> findAll();
 
     List<Recipe> findAllByName(String text);
+
 }

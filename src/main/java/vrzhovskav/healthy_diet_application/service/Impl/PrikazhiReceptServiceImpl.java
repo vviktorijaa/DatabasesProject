@@ -22,7 +22,7 @@ public class PrikazhiReceptServiceImpl implements PrikazhiReceptService {
 
     @Override
     public List<PrikazhiRecept> findAllByName(String text) {
-        return prikazhiReceptRepository.findAllByName(text);
+        return prikazhiReceptRepository.findAllByNameLike(text);
     }
 
     @Override

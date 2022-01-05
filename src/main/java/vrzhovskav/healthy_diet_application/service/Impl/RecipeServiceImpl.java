@@ -22,7 +22,6 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public List<Recipe> findAllByName(String text) {
-        return this.recipeRepository.findAllByNameContaining(text);
+        return this.recipeRepository.findAllByName(text);
     }
-
 }

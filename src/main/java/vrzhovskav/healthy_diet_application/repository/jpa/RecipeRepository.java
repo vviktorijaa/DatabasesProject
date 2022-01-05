@@ -8,6 +8,6 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
 
     List<Recipe> findAll();
 
-    List<Recipe> findAllByNameContaining(String text);
-    
+    List<Recipe> findAllByName(String text);
+
 }

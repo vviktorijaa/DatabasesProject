@@ -34,7 +34,7 @@
 </nav>
 
 <div class="container text-center mt-5">
-    <h1>Hello <th:block th:text="${session.u.getUsername()}"></th:block></h1>
+    <h1>Hello <th:block th:text="${session.u.getUsername()}"></th:block>!</h1>
 
     <div class="row mt-5">
         <div class="col">
@@ -57,7 +57,7 @@
     <div class="row mt-5">
         <div class="col">
             <h2>My favourite recipes</h2>
-            <h4><th:block th:each="recipe: ${session.faveRecipes}"></th:block></h4>
+            <h4></h4>
         </div>
 
         <div class="col">

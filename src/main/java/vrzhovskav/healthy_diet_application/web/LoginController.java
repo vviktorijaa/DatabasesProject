@@ -38,9 +38,12 @@ public class LoginController {
         model.addAttribute("bmi", bmi);
         model.addAttribute("maxKcal", maxKcal);
         User u = new User(username, password, age, gender, height, weight, goal, physicallyActive, maxKcal, bmi, 0, 0);
+//        model.addAttribute("user", userService.save(u.getUsername(), u.getPassword(),
+//                u.getAge(), u.getGender(), u.getHeight(), u.getWeight(),
+//                u.getGoal(), u.getActivity_rate(), u.getKcal_needed(), u.getBmi(), 0, 0));
         model.addAttribute("user", userService.save(u.getUsername(), u.getPassword(),
                 u.getAge(), u.getGender(), u.getHeight(), u.getWeight(),
-                u.getGoal(), u.getActivity_rate(), u.getKcal_needed(), u.getBmi(), 0, 0));
+                u.getGoal(), u.getActivity_rate(), u.getKcal_needed(), u.getBmi(), u.getKcal_consumed(), u.getWater_consumed(), u.getIs_favourite(), u.getUserIsOnADiet()));
         request.getSession().setAttribute("u", u);
         return "/yourInformation";
     }
