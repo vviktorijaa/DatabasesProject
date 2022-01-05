@@ -2,6 +2,7 @@ package vrzhovskav.healthy_diet_application.model;
 
 import lombok.Data;
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -29,16 +30,16 @@ public class User {
             name = "chooses",
             joinColumns = @JoinColumn(name = "username_id"),
             inverseJoinColumns = @JoinColumn(name = "recipe_id"))
-    private Set<Recipe> is_favourite;
+    private List<Recipe> is_favourite;
 
     @ManyToMany
     @JoinTable(
             name = "is_on",
             joinColumns = @JoinColumn(name = "username_id"),
             inverseJoinColumns = @JoinColumn(name = "diet_id"))
-    private Set<Diet> userIsOnADiet;
+    private List<Diet> userIsOnADiet;
 
-    public User(String username, String password, Integer age, String gender, Float height, Float weight, String goal, String activity_rate, Integer kcal_needed, Float bmi, Integer kcal_consumed, Integer water_consumed, Set<Recipe> is_favourite, Set<Diet> userIsOnADiet) {
+    public User(String username, String password, Integer age, String gender, Float height, Float weight, String goal, String activity_rate, Integer kcal_needed, Float bmi, Integer kcal_consumed, Integer water_consumed, List<Recipe> is_favourite, List<Diet> userIsOnADiet) {
         this.username = username;
         this.password = password;
         this.age=age;
