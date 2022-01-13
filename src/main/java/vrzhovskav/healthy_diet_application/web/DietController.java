@@ -2,26 +2,23 @@ package vrzhovskav.healthy_diet_application.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import vrzhovskav.healthy_diet_application.model.ReceptiVoRezhimNaIshrana;
+import org.springframework.web.bind.annotation.*;
+import vrzhovskav.healthy_diet_application.model.Diet;
+import vrzhovskav.healthy_diet_application.model.User;
 import vrzhovskav.healthy_diet_application.service.DietService;
-import vrzhovskav.healthy_diet_application.service.ReceptiVoRezhimNaIshranaService;
-
-import java.util.Optional;
+import vrzhovskav.healthy_diet_application.service.UserService;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/diets")
 public class DietController {
 
     private final DietService dietService;
-    private final ReceptiVoRezhimNaIshranaService receptiVoRezhimNaIshranaService;
+    private final UserService userService;
 
-    public DietController(DietService dietService, ReceptiVoRezhimNaIshranaService receptiVoRezhimNaIshranaService) {
+    public DietController(DietService dietService, UserService userService) {
         this.dietService = dietService;
-        this.receptiVoRezhimNaIshranaService = receptiVoRezhimNaIshranaService;
+        this.userService = userService;
     }
 
     @GetMapping
@@ -33,13 +30,22 @@ public class DietController {
     @GetMapping("/diet/{id}")
     public String getRecipeById(@PathVariable Integer id,
                                 Model model){
-        ReceptiVoRezhimNaIshrana recepti = this.receptiVoRezhimNaIshranaService.findById(id).get();
-        model.addAttribute("recepti", recepti);
+        Diet d = this.dietService.findById(id);
+        model.addAttribute("diet", d);
         return "/showDiets";
     }
 
     @PostMapping("/addToFavourites/{id}")
-    public String addToFave(@PathVariable Integer id){
+    public String addToFave(@PathVariable Integer id,
+                            HttpServletRequest request){
+//        User u = (User) request.getSession().getAttribute("u");
+//        User user = this.userService.findByUsername(u.getUsername());
+//
+//        Diet d = this.dietService.findById(id);
+//
+//        this.userService.updateDiets(user.getUsername_id(), d);
+//
+//        request.getSession().setAttribute("u", user);
         return "redirect:/myProfile";
     }
 }

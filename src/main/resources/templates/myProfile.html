@@ -34,34 +34,35 @@
 </nav>
 
 <div class="container text-center mt-5">
-    <h1>Hello <th:block th:text="${session.u.getUsername()}"></th:block>!</h1>
+    <h1>Hello <th:block th:text="${u.username}"></th:block>!</h1>
 
     <div class="row mt-5">
         <div class="col">
             <h3>Your height</h3>
-            <h4><th:block th:text="${session.u.getHeight()}"></th:block></h4>
+            <h4><th:block th:text="${u.height}"></th:block></h4>
         </div>
 
 
         <div class="col">
             <h3>Your weight</h3>
-            <h4><th:block th:text="${session.u.getWeight()}"></th:block></h4>
+            <h4><th:block th:text="${u.weight}"></th:block></h4>
         </div>
 
         <div class="col mb-5">
             <h3>Your BMI</h3>
-            <h4><th:block th:text="${session.u.getBmi()}"></th:block></h4>
+            <h4><th:block th:text="${u.bmi}"></th:block></h4>
         </div>
     </div>
 
     <div class="row mt-5">
         <div class="col">
             <h2>My favourite recipes</h2>
-            <h4></h4>
+            <h5 style="font-weight: normal" th:each="fave: ${session.u.is_favourite}" th:text="${fave.name}"></h5>
         </div>
 
         <div class="col">
             <h2>My diets</h2>
+<!--            <h4 style="font-weight: normal" th:each="diet: ${session.u.userIsOnADiet}" th:text="${diet.diet_name}"></h4>-->
         </div>
     </div>
 

@@ -5,9 +5,10 @@ import vrzhovskav.healthy_diet_application.model.Recipe;
 import java.util.List;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
-
-    List<Recipe> findAll();
-
-    List<Recipe> findAllByName(String text);
-
+//
+//    List<Recipe> findAllByNameLike(String text);
+//
+//    List<Recipe> findAllByRecipeIsInCategory(String c);
+//
+//    List<Recipe> findAllByNameAndRecipeIsInCategory(String text, String c);
 }

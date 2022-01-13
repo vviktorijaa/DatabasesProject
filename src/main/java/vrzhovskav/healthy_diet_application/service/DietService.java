@@ -6,4 +6,6 @@ import java.util.List;
 public interface DietService {
 
     List<Diet> findAll();
+
+    Diet findById(Integer id);
 }

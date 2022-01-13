@@ -61,8 +61,14 @@
 <div class="container w-25 text-center">
     <form th:method="GET" th:action="@{/recipes}">
         <div class="mb-3">
-            <input type="text" class="form-control" id="search" name="searchRecipes" aria-describedby="search" placeholder="Search recipes">
-            <input type="submit" class="btn btn-primary mt-2 mb-5" value="Search">
+            <div class="row">
+                <div class="col-8">
+                    <input type="text" class="form-control" id="search" name="searchRecipes" aria-describedby="search" placeholder="Search recipes">
+                </div>
+                <div class="col">
+                    <input type="submit" class="btn btn-primary mb-5" value="Search">
+                </div>
+            </div>
         </div>
     </form>
 </div>

@@ -2,7 +2,7 @@ package vrzhovskav.healthy_diet_application.model;
 
 import lombok.Data;
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Data
 @Entity
@@ -15,30 +15,30 @@ public class Recipe {
     private String recipe_desc;
 
     @ManyToMany(mappedBy = "is_favourite")
-    private Set<User> users;
+    private List<User> users;
 
     @ManyToMany
     @JoinTable(
             name = "is_in",
             joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "diet_id"))
-    private Set<Diet> recipeIsInDiet;
+    private List<Diet> recipeIsInDiet;
 
     @ManyToMany
     @JoinTable(
             name = "belongs",
             joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> recipeIsInCategory;
+    private List<Category> recipeIsInCategory;
 
     @ManyToMany
     @JoinTable(
             name = "contains",
             joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
-    private Set<Ingredient> recipeHasIngredients;
+    private List<Ingredient> recipeHasIngredients;
 
-    public Recipe(String name, String recipe_desc, Set<User> users, Set<Diet> recipeIsInDiet, Set<Category> recipeIsInCategory, Set<Ingredient> recipeHasIngredients) {
+    public Recipe(String name, String recipe_desc, List<User> users, List<Diet> recipeIsInDiet, List<Category> recipeIsInCategory, List<Ingredient> recipeHasIngredients) {
         this.name = name;
         this.recipe_desc = recipe_desc;
         this.users = users;

@@ -11,6 +11,7 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="username_id")
     private Integer username_id;
     private String username;
     private String password;
@@ -25,7 +26,7 @@ public class User {
     private Integer kcal_consumed;
     private Integer water_consumed;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "chooses",
             joinColumns = @JoinColumn(name = "username_id"),
@@ -37,9 +38,9 @@ public class User {
             name = "is_on",
             joinColumns = @JoinColumn(name = "username_id"),
             inverseJoinColumns = @JoinColumn(name = "diet_id"))
-    private List<Diet> userIsOnADiet;
+    private Set<Diet> userIsOnADiet;
 
-    public User(String username, String password, Integer age, String gender, Float height, Float weight, String goal, String activity_rate, Integer kcal_needed, Float bmi, Integer kcal_consumed, Integer water_consumed, List<Recipe> is_favourite, List<Diet> userIsOnADiet) {
+    public User(String username, String password, Integer age, String gender, Float height, Float weight, String goal, String activity_rate, Integer kcal_needed, Float bmi, Integer kcal_consumed, Integer water_consumed, List<Recipe> is_favourite, Set<Diet> userIsOnADiet) {
         this.username = username;
         this.password = password;
         this.age=age;
@@ -54,48 +55,6 @@ public class User {
         this.water_consumed = water_consumed;
         this.is_favourite = is_favourite;
         this.userIsOnADiet = userIsOnADiet;
-    }
-
-    public User(String username, String password, Integer age, String gender, Float height, Float weight, String goal, String activity_rate, Integer kcal_needed, Float bmi, Integer kcal_consumed, Integer water_consumed) {
-        this.username = username;
-        this.password = password;
-        this.age=age;
-        this.gender = gender;
-        this.height = height;
-        this.weight = weight;
-        this.goal = goal;
-        this.activity_rate = activity_rate;
-        this.kcal_needed = kcal_needed;
-        this.bmi = bmi;
-        this.kcal_consumed = kcal_consumed;
-        this.water_consumed = water_consumed;
-    }
-
-    public User(String username, String password, Integer age, String gender, Float height, Float weight, String goal, String activity_rate, Integer kcal_needed, Float bmi, Integer kcal_consumed) {
-        this.username = username;
-        this.password = password;
-        this.age=age;
-        this.gender = gender;
-        this.height = height;
-        this.weight = weight;
-        this.goal = goal;
-        this.activity_rate = activity_rate;
-        this.kcal_needed = kcal_needed;
-        this.bmi=bmi;
-        this.kcal_consumed = kcal_consumed;
-    }
-
-    public User(String username, String password, Integer age, String gender, Float height, Float weight, String goal, String activity_rate, Integer kcal_needed, Float bmi) {
-        this.username = username;
-        this.password = password;
-        this.age = age;
-        this.gender = gender;
-        this.height = height;
-        this.weight = weight;
-        this.goal = goal;
-        this.activity_rate = activity_rate;
-        this.kcal_needed = kcal_needed;
-        this.bmi = bmi;
     }
 
     public User() {}

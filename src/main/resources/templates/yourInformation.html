@@ -15,10 +15,10 @@
     <h3 class="mt-5">According to your height: <th:block th:text="${user.height}"></th:block></h3>
     <h3>and your weight: <th:block th:text="${user.weight}"></th:block>,</h3>
     <h3>your ideal daily calorie intake is: </h3>
-    <h3><th:block th:text="${maxKcal}"></th:block></h3>
+    <h3><th:block th:text="${user.kcal_needed}"></th:block></h3>
     <br>
     <h3>Your bmi is:</h3>
-    <h3><th:block th:text="${bmi}"></th:block></h3>
+    <h3><th:block th:text="${user.bmi}"></th:block></h3>
     <br>
     <a type="button" href="home" class="btn btn-success">Go to home page</a>
 </div>

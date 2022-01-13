@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import vrzhovskav.healthy_diet_application.model.User;
 import vrzhovskav.healthy_diet_application.service.UserService;
-
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
@@ -29,10 +28,12 @@ public class AddWaterController {
     public String addWater(@RequestParam Integer consumedWater,
                            HttpServletRequest request){
         User u = (User) request.getSession().getAttribute("u");
+        User user = this.userService.findByUsername(u.getUsername());
         Integer water = consumedWater + u.getWater_consumed();
-        //u = this.userService.save(u.getUsername(), u.getPassword(), u.getAge(), u.getGender(), u.getHeight(), u.getWeight(), u.getGoal(), u.getActivity_rate(), u.getKcal_needed(), u.getBmi(), u.getKcal_consumed(), water);
-        u = this.userService.save(u.getUsername(), u.getPassword(), u.getAge(), u.getGender(), u.getHeight(), u.getWeight(), u.getGoal(), u.getActivity_rate(), u.getKcal_needed(), u.getBmi(), u.getKcal_consumed(), water, u.getIs_favourite(), u.getUserIsOnADiet());
-        request.getSession().setAttribute("u", u);
+
+        this.userService.updateWater(user.getUsername_id(), water);
+
+        request.getSession().setAttribute("u", user);
         return "redirect:/home";
     }
 }

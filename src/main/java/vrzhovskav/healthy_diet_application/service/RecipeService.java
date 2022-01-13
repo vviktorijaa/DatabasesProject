@@ -7,6 +7,10 @@ public interface RecipeService {
 
     List<Recipe> findAll();
 
-    List<Recipe> findAllByName(String text);
+//    List<Recipe> findAllByNameOrCategory(String text, Integer c);
+//
+//    List<Recipe> findAllByCategory(Integer c);
+
+    Recipe findById(Integer id);
 
 }

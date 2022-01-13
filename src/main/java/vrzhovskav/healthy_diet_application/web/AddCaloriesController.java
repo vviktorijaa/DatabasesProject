@@ -22,12 +22,15 @@ public class AddCaloriesController {
     }
 
     @PostMapping
-    public String addCalories(@RequestParam Integer consumedKcal, HttpServletRequest request){
+    public String addCalories(@RequestParam Integer consumedKcal,
+                              HttpServletRequest request){
         User u = (User) request.getSession().getAttribute("u");
+        User user = this.userService.findByUsername(u.getUsername());
         Integer kcal = consumedKcal + u.getKcal_consumed();
-        //u = this.userService.save(u.getUsername(), u.getPassword(), u.getAge(), u.getGender(), u.getHeight(), u.getWeight(), u.getGoal(), u.getActivity_rate(), u.getKcal_needed(), u.getBmi(), kcal, u.getWater_consumed());
-        u = this.userService.save(u.getUsername(), u.getPassword(), u.getAge(), u.getGender(), u.getHeight(), u.getWeight(), u.getGoal(), u.getActivity_rate(), u.getKcal_needed(), u.getBmi(), kcal, u.getWater_consumed(), u.getIs_favourite(), u.getUserIsOnADiet());
-        request.getSession().setAttribute("u", u);
+
+        this.userService.updateKcal(user.getUsername_id(), kcal);
+
+        request.getSession().setAttribute("u", user);
         return "redirect:/home";
     }
 }

@@ -8,18 +8,18 @@ import vrzhovskav.healthy_diet_application.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-@RequestMapping("/login")
-public class LoginController {
+@RequestMapping("/register")
+public class RegisterController {
 
     private final UserService userService;
 
-    public LoginController(UserService userService) {
+    public RegisterController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping
-    public String getLoginPage(){
-        return "login";
+    public String getRegisterPage(){
+        return "register";
     }
 
     @PostMapping
@@ -35,15 +35,18 @@ public class LoginController {
                               HttpServletRequest request){
         Float bmi = userService.calculateBMI(height, weight);
         Integer maxKcal = userService.maxCalories(age, gender, height, weight, physicallyActive, goal);
-        model.addAttribute("bmi", bmi);
-        model.addAttribute("maxKcal", maxKcal);
-        User u = new User(username, password, age, gender, height, weight, goal, physicallyActive, maxKcal, bmi, 0, 0);
-//        model.addAttribute("user", userService.save(u.getUsername(), u.getPassword(),
-//                u.getAge(), u.getGender(), u.getHeight(), u.getWeight(),
-//                u.getGoal(), u.getActivity_rate(), u.getKcal_needed(), u.getBmi(), 0, 0));
-        model.addAttribute("user", userService.save(u.getUsername(), u.getPassword(),
-                u.getAge(), u.getGender(), u.getHeight(), u.getWeight(),
-                u.getGoal(), u.getActivity_rate(), u.getKcal_needed(), u.getBmi(), u.getKcal_consumed(), u.getWater_consumed(), u.getIs_favourite(), u.getUserIsOnADiet()));
+
+        User u = new User(username, password, age, gender, height, weight, goal, physicallyActive, maxKcal, bmi, 0, 0, null,null);
+        model.addAttribute("user",
+                this.userService.save(u.getUsername(),
+                        u.getPassword(), u.getAge(),
+                        u.getGender(), u.getHeight(),
+                        u.getWeight(), u.getGoal(),
+                        u.getActivity_rate(), u.getKcal_needed(),
+                        u.getBmi(), u.getKcal_consumed(),
+                        u.getWater_consumed(), u.getIs_favourite(),
+                        u.getUserIsOnADiet()));
+
         request.getSession().setAttribute("u", u);
         return "/yourInformation";
     }
